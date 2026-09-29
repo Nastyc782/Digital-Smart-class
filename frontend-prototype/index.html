@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digital Smart Class</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F6F4;--card:#fff;--ink:#17242B;--mute:#63727A;--line:#DDE3E1;--brand:#0B6E6E;--brand2:#E3F2F0;--mtn:#FFCC00;--ok:#1E8E4E;--warn:#B7791F;--bad:#C2413B;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]){}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1719;--card:#172226;--ink:#E7EEEE;--mute:#93A4A8;--line:#26363B;--brand:#3FB8B0;--brand2:#12302F}}
+:root[data-theme="dark"]{--bg:#0F1719;--card:#172226;--ink:#E7EEEE;--mute:#93A4A8;--line:#26363B;--brand:#3FB8B0;--brand2:#12302F}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',Inter,sans-serif;margin:0 0 .4em;letter-spacing:-.01em}
+h1{font-size:28px;font-weight:800}h2{font-size:20px}h3{font-size:16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:10px 20px}
+.logo{font:800 18px 'Bricolage Grotesque',sans-serif}.logo i{display:inline-block;width:12px;height:12px;background:var(--mtn);border-radius:3px;margin-right:6px}
+.roles{display:flex;gap:4px;background:var(--bg);padding:3px;border-radius:10px;margin-left:auto}
+.roles button{border:0;background:none;color:var(--mute);padding:6px 12px;border-radius:8px;font:500 13px Inter;cursor:pointer}
+.roles button.on{background:var(--brand);color:#fff}
+nav{display:flex;gap:4px;padding:8px 20px;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--card)}
+nav button{border:0;background:none;color:var(--mute);padding:8px 12px;border-radius:8px;font:500 14px Inter;cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--brand2);color:var(--brand);font-weight:600}
+main{max-width:1000px;margin:0 auto;padding:24px 20px 60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.stat b{display:block;font:800 26px 'Bricolage Grotesque'}.stat span{color:var(--mute);font-size:13px}
+.btn{border:0;background:var(--brand);color:#fff;padding:9px 16px;border-radius:8px;font:600 14px Inter;cursor:pointer}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}.btn.bad{background:var(--bad)}.btn.ok{background:var(--ok)}.btn.mtn{background:var(--mtn);color:#17242B}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,nav button:focus-visible,.roles button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.tag{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600}
+.PENDING{background:#FFF1D6;color:var(--warn)}.APPROVED{background:#DDF3E6;color:var(--ok)}.REJECTED{background:#FBE1DF;color:var(--bad)}.LOCKED{background:var(--line);color:var(--mute)}
+.tblw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--mute);font-weight:500}
+input,textarea,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;margin:4px 0 12px}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{justify-content:space-between}
+.mute{color:var(--mute);font-size:13px}.pay{background:var(--mtn);color:#17242B;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.lesson{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;cursor:pointer;background:var(--card)}
+.lesson.cur{border-color:var(--brand);background:var(--brand2)}
+.video{aspect-ratio:16/9;background:#0d1a1c;border-radius:10px;display:grid;place-items:center;color:#9fd;margin-bottom:10px;text-align:center}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:9px;opacity:0;pointer-events:none;transition:.2s;z-index:9;max-width:90%}
+#toast.on{opacity:1}
+.deny{text-align:center;padding:50px 10px}.deny h1{font-size:64px;color:var(--bad)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.hero{display:grid;grid-template-columns:1.1fr 1fr;max-width:980px;margin:16px auto;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(11,60,70,.10)}
+.hero .l{background:linear-gradient(150deg,#0B6E6E,#0d3442);color:#fff;padding:40px 32px;display:flex;flex-direction:column;justify-content:center}
+.hero .l h1{font-size:34px;line-height:1.1}.hero .l ul{padding-left:18px}.hero .l li{margin:8px 0;opacity:.92}.hero .r{padding:28px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.av{width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.lift{transition:transform .15s,box-shadow .15s}.lift:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(11,60,70,.14)}
+.band{height:76px;margin:-16px -16px 12px;border-radius:12px 12px 0 0;display:grid;place-items:center;color:#fff;font:800 30px 'Bricolage Grotesque'}
+.ring{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;background:conic-gradient(var(--brand) var(--p),var(--line) 0)}.ring span{background:var(--card);width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+.np{position:absolute;right:0;top:46px;width:min(340px,86vw);max-height:60vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.2);padding:6px;z-index:8}.np div{padding:9px;border-bottom:1px solid var(--line);font-size:13px}
+.chat{display:flex;flex-direction:column;gap:8px;max-height:46vh;overflow:auto;padding:4px}
+.msg{max-width:80%;padding:8px 12px;border-radius:14px;background:var(--bg);font-size:14px}.msg.me{align-self:flex-end;background:var(--brand);color:#fff}.msg small{display:block;opacity:.7;font-size:11px}.msg.ann{border:2px solid var(--mtn)}
+.PAID{background:#DDF3E6;color:var(--ok)}@media print{header,nav,.no,#toast{display:none!important}}body{background:radial-gradient(1200px 420px at 85% -120px,rgba(11,110,110,.12),transparent),var(--bg)}
+.banner{background:linear-gradient(120deg,#0B6E6E,#0d3442);color:#fff;border-radius:16px;padding:22px 24px;margin-bottom:20px;position:relative;overflow:hidden}.banner:after{content:'';position:absolute;right:-30px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,204,0,.35)}.banner h1{margin:0;position:relative}.banner p{margin:6px 0 0;opacity:.9;position:relative}
+.grid>.stat{border-top:4px solid var(--brand)}.grid>.stat:nth-child(2){border-color:#FFCC00}.grid>.stat:nth-child(3){border-color:#2F5D9E}.grid>.stat:nth-child(4){border-color:#B8622E}
+tr:hover td{background:var(--brand2)}.btn{transition:filter .15s,transform .1s}.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.98)}
+</style></head><body>
+<header><div class="logo"><i></i>Digital Smart Class</div>
+<div class="row" style="margin-left:auto" id="hdr"></div></header>
+<nav id="nav"></nav><main id="main"></main><div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString('en-US')+' RWF';
+const S={role:'student',view:'home',sel:null,lesson:0,
+ settings:{threshold:90,sms:true,share:70},
+ me:{student:'Fabrice Tuyishime',teacher:'John Habimana',admin:'Admin',accountant:'Accountant'},
+ courses:[
+  {id:1,t:'Web Development',teacher:'John Habimana',cat:'Programming',price:30000,dur:'3 Months',what:['HTML','CSS','JavaScript','PHP','MySQL'],stu:['Fabrice Tuyishime','Eric Nshuti','Alice Uwase','Patrick Mugisha']},
+  {id:2,t:'Java Programming',teacher:'John Habimana',cat:'Programming',price:25000,dur:'2 Months',what:['OOP','Collections','Spring Boot'],stu:['Fabrice Tuyishime','Eric Nshuti','Alice Uwase']},
+  {id:3,t:'Networking',teacher:'Diane Ingabire',cat:'Infrastructure',price:20000,dur:'6 Weeks',what:['TCP/IP','Routing','Subnetting'],stu:['Alice Uwase']},
+  {id:4,t:'Cybersecurity',teacher:'Diane Ingabire',cat:'Security',price:35000,dur:'3 Months',what:['Threats','Crypto','Pen testing'],stu:[]}],
+ lessons:['Course introduction','Fundamentals','Core concepts','Hands-on practice','Final project'].map((t,i)=>({t,min:[12,25,40,35,20][i]})),
+ pay:[{id:1,stu:'Fabrice Tuyishime',c:2,amt:25000,st:'APPROVED',ref:'MP260914.1122.A81',msg:'You have paid 25000 RWF to Marie Claire MUKABAGANWA',d:'14/09/2026'},
+      {id:2,stu:'Fabrice Tuyishime',c:3,amt:20000,st:'REJECTED',ref:'MP2609',msg:'paid',d:'20/09/2026',why:'Payment could not be verified. Please submit a valid transaction message.'},
+      {id:3,stu:'Eric Nshuti',c:1,amt:30000,st:'PENDING',ref:'MP260929.0955.C12',msg:'You have paid 30000 RWF to Marie Claire MUKABAGANWA',d:'29/09/2026'},
+      {id:4,stu:'Alice Uwase',c:4,amt:35000,st:'PENDING',ref:'MP260930.0810.D40',msg:'You have paid 35000 RWF to Marie Claire MUKABAGANWA',d:'30/09/2026'}],
+ apps:[{id:1,n:'Teacher A',e:'a@gmail.com',q:"Bachelor's Degree",x:'3 Years',st:'PENDING'},{id:2,n:'Teacher B',e:'b@gmail.com',q:'Diploma',x:'1 Year',st:'PENDING'},{id:3,n:'Teacher C',e:'c@gmail.com',q:'Master\'s Degree',x:'6 Years',st:'APPROVED'}],
+ prog:{'Fabrice Tuyishime|2':[100,100,100,60,0]},
+ notes:[{r:'student',m:'Your payment for Java Programming has been approved. Your course is now available.'},{r:'student',m:'Your payment for Networking was rejected. Reason: Payment could not be verified.'}]};
+S.msgs=[{c:2,who:'John Habimana',text:'Welcome to Java Programming! Ask your questions here.',t:'14/09',ann:true},{c:2,who:'Eric Nshuti',text:'Sir, which IDE do you recommend?',t:'15/09'},{c:2,who:'John Habimana',text:'IntelliJ IDEA Community is a good start.',t:'15/09'},{c:1,who:'John Habimana',text:'Web Development starts on Monday.',t:'28/09',ann:true}];S.room=null;S.panel=false;S.quiz={'Fabrice Tuyishime|2_0':true,'Fabrice Tuyishime|2_1':true,'Fabrice Tuyishime|2_2':true};S.certs=[];S.sms=[];S.payouts=[];S.qz=null;
+// ---- backend-style guard: enrollment must be APPROVED (never just hide the UI)
+const enrolled=(stu,c)=>S.pay.some(p=>p.stu===stu&&p.c===c&&p.st==='APPROVED');
+const progOf=(c,n=S.me.student)=>{const a=S.prog[n+'|'+c]||[];return Math.round(S.lessons.filter((_,i)=>(a[i]||0)>=S.settings.threshold&&S.quiz[n+'|'+c+'_'+i]).length*100/S.lessons.length)};
+const ROUTES={student:['home','catalog','mine','msgs','payments','profile'],teacher:['home','tcourses','tstudents','msgs','earn','profile'],admin:['home','apps','apay','payouts','courses','settings','profile'],accountant:['home','apay','payouts','revenue','profile']};
+const LBL={msgs:'Messages',earn:'Earnings',payouts:'Payouts',home:'Dashboard',catalog:'Courses',mine:'My courses',payments:'Payment status',profile:'Profile',tcourses:'My courses',tstudents:'My students',apps:'Teacher applications',apay:'Payments',courses:'All courses',settings:'Settings',revenue:'Revenue'};
+const tag=s=>`<span class="tag ${s}">${s}</span>`;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('on'),2600)}
+function notify(r,m){S.notes.unshift({r,m});if(S.settings.sms)S.sms.unshift({to:r,m})}
+function render(){
+ if(!S.user){$('#hdr').innerHTML='';$('#nav').innerHTML='';$('#main').innerHTML=S.auth==='signup'?signupView():S.auth==='forgot'?forgotView():loginView();return}
+ if(S.user.status==='PENDING'){$('#hdr').innerHTML=hdr(0);$('#nav').innerHTML='';$('#main').innerHTML=`<div class="card" style="max-width:520px;margin:30px auto"><h2>Application under review</h2><p>${tag('PENDING')}</p><p class="mute">An administrator is reviewing your teacher application. You will be notified when it is approved. You cannot create courses until then.</p></div>`;return}
+ $('#nav').innerHTML=ROUTES[S.role].map(v=>`<button data-a="go" data-v="${v}" class="${S.view===v?'on':''}">${LBL[v]}</button>`).join('')+(S.role==='student'?`<button data-a="hack">Try /admin/dashboard</button>`:'');
+ $('#hdr').innerHTML=hdr(S.notes.filter(x=>x.r===S.role).length);
+ const V=V_[S.view]||V_.home;$('#main').innerHTML=S.view==='forbidden'?`<div class="deny"><h1>403</h1><h3>Access denied</h3><p class="mute">The server checked your role (${S.role}) and blocked this route.</p></div>`:V();
+}
+const BANDS=['#0B6E6E','#2F5D9E','#7A4CA0','#B8622E'];
+const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const HERO=`<div class="l"><h1>Learn skills that get you hired.</h1><ul><li>Pick a course and pay with MTN MoMo</li><li>Get access as soon as your payment is approved</li><li>Watch, practise and track your progress</li><li>Ask your teacher in each course room</li></ul></div>`;
+const QUIZ=[{q:'What is the main goal of this course?',o:['Practical skills','Memorising slides','Nothing'],a:0},{q:'Which habit helps you learn fastest?',o:['Skipping practice','Hands-on practice','Waiting'],a:1},{q:'What should you do when you are stuck?',o:['Give up','Ask in the course room','Delete your work'],a:1},{q:'Why finish the final project?',o:['To show what you built','To avoid learning','No reason'],a:0},{q:'How do you earn the certificate?',o:['Finish all lessons and quizzes','Pay twice','Log out'],a:0}];
+const qzView=()=>{const q=QUIZ[S.lesson];return `<div class="card" style="margin:10px 0"><b>${q.q}</b>${q.o.map((o,i)=>`<div><button class="btn ghost" style="margin-top:6px" data-a="ans" data-v="${i}">${o}</button></div>`).join('')}</div>`};
+const earnOf=t=>{const my=S.courses.filter(c=>c.teacher===t).map(c=>c.id),gross=S.pay.filter(p=>p.st==='APPROVED'&&my.includes(p.c)).reduce((a,p)=>a+p.amt,0),earned=Math.round(gross*S.settings.share/100),paid=S.payouts.filter(x=>x.t===t&&x.st!=='REJECTED').reduce((a,x)=>a+x.amt,0);return{gross,earned,avail:earned-paid}};
+const forgotView=()=>`<div class="hero">${HERO}<div class="r"><h1>Reset password</h1><div class="card"><label>Email<input id="fe" type="email"></label><button class="btn ghost" data-a="sendcode">Send code by SMS</button><label style="margin-top:12px">Code<input id="fc" inputmode="numeric"></label><label>New password<input id="fp" type="password" autocomplete="new-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="doreset">Reset password</button><p class="mute" style="margin-bottom:0"><button class="btn ghost" data-a="showlogin">Back to sign in</button></p></div></div></div>`;
+const ACC=[{e:'student@demo.rw',role:'student',name:'Fabrice Tuyishime',label:'Student'},{e:'teacher@demo.rw',role:'teacher',name:'John Habimana',label:'Teacher'},{e:'admin@demo.rw',role:'admin',name:'Platform Admin',label:'Admin'},{e:'accountant@demo.rw',role:'accountant',name:'Platform Accountant',label:'Accountant'},{e:'newteacher@demo.rw',role:'teacher',name:'Teacher A',label:'Teacher (pending)',status:'PENDING'}];
+const hdr=n=>`<span style="position:relative"><button class="btn ghost" data-a="bell" aria-label="Notifications">🔔 ${n}</button>${S.panel?`<div class="np">${S.notes.filter(x=>x.r===S.role).map(x=>`<div>${x.m}</div>`).join('')||'<div class="mute">No notifications yet.</div>'}</div>`:''}</span><span class="av">${S.user.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</span><span class="mute" style="line-height:1.2"><b style="color:var(--ink)">${S.user.name}</b><br>${S.user.role}</span><button class="btn ghost" data-a="logout">Log out</button>`;
+const loginView=()=>`<div class="hero">${HERO}<div class="r"><h1>Sign in</h1><p class="mute">You will be taken to the dashboard for your role.</p><div class="card"><label>Email<input id="em" type="email" autocomplete="username"></label><label>Password<input id="pw" type="password" autocomplete="current-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="login">Sign in</button><p class="mute" style="margin-bottom:0">New here? <button class="btn ghost" data-a="showsignup">Create an account</button> <button class="btn ghost" data-a="showforgot">Forgot password?</button></p></div><div class="card" style="margin-top:14px"><b>Verify a certificate</b><div class="row" style="margin-top:8px"><input id="vc" placeholder="DSC-2026-12345" style="flex:1;margin:0"><button class="btn ghost" data-a="verify">Verify</button></div></div><div class="card" style="margin-top:14px"><b>Demo accounts</b> <span class="mute">Password: Demo@2026</span><div class="row" style="margin-top:8px">${ACC.map(a=>`<button class="btn ghost" data-a="fill" data-v="${a.e}">${a.label}</button>`).join('')}</div></div></div></div>`;
+const signupView=()=>`<div class="hero">${HERO}<div class="r"><h1>Create your account</h1><div class="card"><label>I am a<select id="rr"><option value="student">Student</option><option value="teacher">Teacher</option></select></label><label>Full name<input id="rn" autocomplete="name"></label><label>Email<input id="re" type="email" autocomplete="username"></label><label>Phone<input id="rp" type="tel"></label><div id="tx" style="display:none"><label>Qualification<input id="rq" placeholder="e.g. Bachelor's degree in IT"></label><label>Experience<input id="rx" placeholder="e.g. 3 years"></label><label>Address<input id="ra"></label></div><label>Password<input id="r1" type="password" autocomplete="new-password"></label><label>Confirm password<input id="r2" type="password" autocomplete="new-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="register">Create account</button><p class="mute" style="margin-bottom:0">Teachers must be approved by an admin before they can teach. <button class="btn ghost" data-a="showlogin">Back to sign in</button></p></div></div></div>`;
+const bn=(t,sub)=>`<div class="banner"><h1>${t}</h1><p>${sub}</p></div>`;
+const K=c=>S.me.student+'|'+c;
+const stat=(a,b)=>`<div class="card stat"><b>${a}</b><span>${b}</span></div>`;
+const V_={
+home(){const r=S.role,uP=S.pay.filter(p=>p.st==='PENDING').length,rev=S.pay.filter(p=>p.st==='APPROVED').reduce((s,p)=>s+p.amt,0);
+ if(r==='student'){const my=S.courses.filter(c=>enrolled(S.me.student,c.id));return `${bn('Welcome, '+S.me.student.split(' ')[0],'Pick up where you left off, or find a new course.')}<div class="grid" style="margin-bottom:24px">${stat(S.courses.length,'Courses available')}${stat(my.length,'Enrolled')}${stat(my.filter(c=>progOf(c.id)===100).length,'Completed')}</div><h2>Continue learning</h2>${my.map(c=>`<div class="card lift row sp" style="margin-bottom:10px"><div class="row"><div class="ring" style="--p:${progOf(c.id)}%"><span>${progOf(c.id)}%</span></div><div><b>${c.t}</b><br><span class="mute">${c.teacher}</span></div></div><button class="btn" data-a="open" data-v="${c.id}">Resume</button></div>`).join('')||'<p class="mute">You have no courses yet. Browse the catalog and buy your first course.</p>'}`}
+ if(r==='teacher')return `${bn('Welcome, '+S.me.teacher.split(' ')[0],'Manage your courses and answer your students.')}<p>${tag('APPROVED')} <span class="mute">Your account is approved. You can create and manage courses.</span></p><div class="grid">${stat(S.courses.filter(c=>c.teacher===S.me.teacher).length,'My courses')}${stat(S.courses.filter(c=>c.teacher===S.me.teacher).reduce((s,c)=>s+c.stu.length,0),'Total students')}</div>`;
+ return `${bn(r==='admin'?'Admin dashboard':'Accountant dashboard','Everything that needs your attention is here.')}<div class="grid">${r==='admin'?stat(new Set([...S.courses.flatMap(c=>c.stu),...ACC.filter(a=>a.role==='student').map(a=>a.name)]).size,'Students')+stat(new Set([...S.courses.map(c=>c.teacher),...ACC.filter(a=>a.role==='teacher'&&!a.status).map(a=>a.name)]).size,'Teachers')+stat(S.courses.length,'Courses')+stat(S.apps.filter(a=>a.st==='PENDING').length,'Pending teachers'):''}${stat(uP,'Pending payments')}${stat(fmt(rev),'Total revenue')}</div>`},
+catalog(){return `<h1>Courses</h1><div class="grid">${S.courses.map(c=>{const e=enrolled(S.me.student,c.id);return `<div class="card lift"><div class="band" style="background:${BANDS[c.id%4]}">${c.t[0]}</div><h3>${c.t}</h3><p class="mute">${c.teacher} · ${c.dur}<br>${c.cat}</p><div class="row sp"><b>${fmt(c.price)}</b>${e?tag('APPROVED'):''}</div><p><button class="btn ${e?'':'ghost'}" data-a="${e?'open':'detail'}" data-v="${c.id}">${e?'Open course':'View course'}</button></p></div>`}).join('')}</div>`},
+detail(){const c=S.courses.find(x=>x.id===S.sel),p=S.pay.find(x=>x.c===c.id&&x.stu===S.me.student&&x.st==='PENDING');
+ return `<button class="btn ghost" data-a="go" data-v="catalog">Back</button><h1 style="margin-top:14px">${c.t}</h1><p class="mute">Teacher: ${c.teacher} · ${c.dur} · ${S.lessons.length} lessons · <b>${fmt(c.price)}</b></p><div class="card"><h3>What you will learn</h3>${c.what.map(w=>'✓ '+w).join('<br>')}<p class="mute">Videos, files, notes and presentations unlock after your payment is approved.</p>${p?`<p>${tag('PENDING')} Waiting for review.</p>`:`<button class="btn mtn" data-a="buy" data-v="${c.id}">Buy course</button>`}</div>`},
+buy(){const c=S.courses.find(x=>x.id===S.sel);return `<h1>Purchase ${c.t}</h1><p><b>${fmt(c.price)}</b></p><div class="pay"><b>MTN Mobile Money</b><br>0780285418 · Marie Claire MUKABAGANWA</div><div class="pay"><b>MoMo Pay</b><br>Code 334189 · Paradise</div><div class="card"><label>Payment message<textarea id="pm" rows="3" placeholder="Paste the SMS you received"></textarea></label><label>Transaction reference<input id="pr" placeholder="e.g. MP260930.1020.B77"></label><button class="btn" data-a="submit" data-v="${c.id}">Submit payment</button></div>`},
+payments(){const mine=S.pay.filter(p=>p.stu===S.me.student);return `<h1>Payment status</h1><div class="card tblw"><table><tr><th>Course</th><th>Amount</th><th>Status</th><th>Note</th></tr>${mine.map(p=>`<tr><td>${S.courses.find(c=>c.id===p.c).t}</td><td>${fmt(p.amt)}</td><td>${tag(p.st)}</td><td class="mute" style="white-space:normal">${p.why||''}</td></tr>`).join('')}</table></div>`},
+mine(){const my=S.courses.filter(c=>enrolled(S.me.student,c.id));return `<h1>My courses</h1><div class="grid">${my.map(c=>`<div class="card"><h3>${c.t}</h3><div class="bar"><i style="width:${progOf(c.id)}%"></i></div><p class="mute">${progOf(c.id)}% complete</p><button class="btn" data-a="open" data-v="${c.id}">Open</button> ${S.certs.find(k=>k.c===c.id&&k.stu===S.me.student)?`<button class="btn ghost" data-a="cert" data-v="${c.id}">Certificate</button>`:''}</div>`).join('')||'<p class="mute">Nothing unlocked yet.</p>'}</div>`},
+learn(){const id=S.sel;if(!enrolled(S.me.student,id)){return `<div class="deny"><h1>403</h1><h3>Course locked</h3><p class="mute">No APPROVED enrollment found. The server refuses to send this content.</p></div>`}
+ const c=S.courses.find(x=>x.id===id),a=S.prog[K(id)]=S.prog[K(id)]||[],L=S.lessons[S.lesson],th=S.settings.threshold,pc=a[S.lesson]||0,done=pc>=th;
+ const ok=i=>(a[i]||0)>=th&&S.quiz[K(id)+'_'+i],unlocked=i=>i===0||ok(i-1),all=S.lessons.every((_,i)=>ok(i));
+ return `<h1>${c.t}</h1><div class="row"><div class="bar" style="flex:1"><i style="width:${progOf(id)}%"></i></div><b>${progOf(id)}%</b></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:16px"><div>${S.lessons.map((l,i)=>`<div class="lesson ${i===S.lesson?'cur':''}" ${unlocked(i)?`data-a="lesson" data-v="${i}"`:'style="opacity:.55;cursor:not-allowed"'}>${ok(i)?'✓':unlocked(i)?'▶':'🔒'} <span>${l.t}</span><span class="mute" style="margin-left:auto">${l.min} min</span></div>`).join('')}</div><div><div class="video"><div>Protected video stream<br><span class="mute">${L.t}</span></div></div><div class="bar"><i style="width:${pc}%"></i></div><p class="mute">Watched ${Math.round(L.min*pc/100)} of ${L.min} min (${pc}%). ${ok(S.lesson)?'Lesson completed.':done?'Pass the quiz to complete this lesson.':'Watch '+th+'% then pass the quiz to complete.'}</p><div class="row"><button class="btn ghost" data-a="watch">Watch 10 more minutes</button><button class="btn" data-a="quiz" ${done&&!ok(S.lesson)?'':'disabled'}>Take quiz</button><button class="btn ghost" data-a="ask" data-v="${id}">Ask the teacher</button></div>${S.qz===S.lesson&&done&&!ok(S.lesson)?qzView():''}${all?`<p><button class="btn ok" data-a="cert" data-v="${id}">Get your certificate</button></p>`:''}<p class="mute">📄 Notes · 📊 Presentation · 📁 Exercise (served only after enrollment check)</p></div></div>`},
+tcourses(){return `<h1>My courses</h1><div class="grid">${S.courses.filter(c=>c.teacher===S.me.teacher).map(c=>`<div class="card"><h3>${c.t}</h3><p class="mute">${c.stu.length} students · ${fmt(c.price)}</p><button class="btn ghost" data-a="tst" data-v="${c.id}">View students</button></div>`).join('')}</div><div class="card" style="margin-top:14px"><h3>Create course</h3><div class="grid"><input id="nct" placeholder="Title"><input id="ncp" type="number" placeholder="Price (RWF)"></div><button class="btn" data-a="newcourse">Create course</button></div>`},
+tstudents(){const own=S.courses.filter(x=>x.teacher===S.me.teacher),c=own.find(y=>y.id===S.sel)||own[0];if(!c)return '<h1>My students</h1><p class="mute">Create a course to see enrolled students.</p>';const pr=c.stu.map((s,i)=>S.prog[s+'|'+c.id]?progOf(c.id,s):[80,65,100,35][i%4]);return `<h1>Students in ${c.t}</h1><p class="mute">Only your own courses appear here. Other teachers' students are blocked by the API.</p><div class="card tblw"><table><tr><th>Student</th><th>Progress</th></tr>${c.stu.map((s,i)=>`<tr><td>${s}</td><td style="min-width:160px"><div class="bar"><i style="width:${pr[i]}%"></i></div>${pr[i]}%</td></tr>`).join('')}</table></div>`},
+apps(){return `<h1>Teacher applications</h1><div class="card tblw"><table><tr><th>Name</th><th>Email</th><th>Qualification</th><th>Experience</th><th>Status</th><th></th></tr>${S.apps.map(a=>`<tr><td>${a.n}</td><td>${a.e}</td><td>${a.q}</td><td>${a.x}</td><td>${tag(a.st)}</td><td>${a.st==='PENDING'?`<button class="btn ok" data-a="tapp" data-v="${a.id}">Approve</button> <button class="btn bad" data-a="trej" data-v="${a.id}">Reject</button>`:''}</td></tr>`).join('')}</table></div>`},
+apay(){const can=S.role==='admin'||S.role==='accountant';return `<h1>Payment management</h1><div class="card tblw"><table><tr><th>Student</th><th>Course</th><th>Amount</th><th>Reference</th><th>Date</th><th>Status</th><th></th></tr>${S.pay.map(p=>`<tr><td>${p.stu}</td><td>${S.courses.find(c=>c.id===p.c).t}</td><td>${fmt(p.amt)}</td><td>${p.ref}</td><td>${p.d}</td><td>${tag(p.st)}</td><td>${p.st==='PENDING'&&can?`<button class="btn ok" data-a="papp" data-v="${p.id}">Approve</button> <button class="btn bad" data-a="prej" data-v="${p.id}">Reject</button>`:''}</td></tr>`).join('')}</table></div>`},
+revenue(){const ap=S.pay.filter(p=>p.st==='APPROVED');return `<h1>Revenue</h1><div class="grid">${stat(fmt(ap.reduce((s,p)=>s+p.amt,0)),'Approved revenue')}${stat(S.pay.filter(p=>p.st==='PENDING').length,'Pending')}${stat(S.pay.filter(p=>p.st==='REJECTED').length,'Rejected')}</div><h2 style="margin-top:22px">Sales by course</h2><div class="card">${S.courses.map(c=>{const t=ap.filter(p=>p.c===c.id).reduce((s,p)=>s+p.amt,0);return `<div class="row sp"><span>${c.t}</span><b>${fmt(t)}</b></div>`}).join('')}</div><p class="mute">Accountants cannot manage teachers, delete students or edit courses.</p>`},
+courses(){return `<h1>All courses</h1><div class="card tblw"><table><tr><th>Course</th><th>Teacher</th><th>Price</th><th>Students</th></tr>${S.courses.map(c=>`<tr><td>${c.t}</td><td>${c.teacher}</td><td>${fmt(c.price)}</td><td>${c.stu.length}</td></tr>`).join('')}</table></div>`},
+settings(){return `<h1>Settings</h1><div class="card"><label>Video completion threshold (%)<input id="th" type="number" min="50" max="100" value="${S.settings.threshold}"></label><label>Teacher share of each sale (%)<input id="sh" type="number" min="0" max="100" value="${S.settings.share}"></label><label style="display:flex;gap:8px;align-items:center"><input id="sm" type="checkbox" style="width:auto;margin:0" ${S.settings.sms?'checked':''}>Send SMS alerts</label><button class="btn" data-a="saveth">Save changes</button></div><h2 style="margin-top:22px">SMS outbox</h2><div class="card">${S.sms.slice(0,8).map(x=>`<div class="mute">To ${x.to}: ${x.m}</div>`).join('')||'<span class="mute">No SMS sent yet.</span>'}</div>`},
+msgs(){const st=S.role==='student',cs=st?S.courses.filter(c=>enrolled(S.me.student,c.id)):S.courses.filter(c=>c.teacher===S.me.teacher);
+ if(!cs.length)return '<h1>Messages</h1><p class="mute">Course rooms appear here once you have a course.</p>';
+ const c=cs.find(x=>x.id===S.room)||cs[0],ms=S.msgs.filter(m=>m.c===c.id);
+ return `<h1>Messages</h1><div class="row" style="margin-bottom:12px">${cs.map(x=>`<button class="btn ${x.id===c.id?'':'ghost'}" data-a="room" data-v="${x.id}">${x.t}</button>`).join('')}</div><div class="card"><h3>${c.t} course room</h3><p class="mute">${st?'Ask '+c.teacher+' and your classmates.':'Answer students and post announcements.'}</p><div class="chat" id="chat">${ms.map(m=>`<div class="msg ${m.who===S.user.name?'me':''} ${m.ann?'ann':''}"><small>${m.ann?'📢 Announcement · ':''}${m.who} · ${m.t}</small>${m.text}</div>`).join('')||'<p class="mute">No messages yet. Say hello.</p>'}</div><div class="row" style="margin-top:12px"><input id="mt" placeholder="Write a message" style="flex:1;margin:0"><button class="btn" data-a="send" data-v="${c.id}">Send</button>${st?'':`<button class="btn mtn" data-a="ann" data-v="${c.id}">Announce</button>`}</div></div>`},
+cert(){const k=S.certs.find(x=>x.c===S.sel&&x.stu===S.me.student),c=S.courses.find(x=>x.id===S.sel);
+ const cells=Array.from({length:49},(_,j)=>(k.code.charCodeAt(j%k.code.length)*(j+5))%3?`<rect x="${j%7*8}" y="${Math.floor(j/7)*8}" width="7" height="7"/>`:'').join('');
+ return `<div class="card" style="max-width:640px;margin:0 auto;text-align:center;border:3px double var(--brand);padding:36px 24px"><div class="logo"><i></i>Digital Smart Class</div><p class="mute">Certificate of completion</p><h1>${k.stu}</h1><p>has successfully completed</p><h2>${c.t}</h2><p class="mute">Taught by ${c.teacher} · Issued ${k.d}</p><svg width="84" height="84" viewBox="0 0 55 55" fill="currentColor" role="img" aria-label="Verification pattern">${cells}</svg><p><b>${k.code}</b><br><span class="mute">Verify this code on the sign-in page</span></p></div><p class="row no" style="justify-content:center;margin-top:14px"><button class="btn" data-a="print">Print or save as PDF</button><button class="btn ghost" data-a="go" data-v="mine">Back</button></p>`},
+earn(){const e=earnOf(S.me.teacher),po=S.payouts.filter(x=>x.t===S.me.teacher);return `<h1>Earnings</h1><div class="grid">${stat(fmt(e.gross),'Course sales')}${stat(S.settings.share+'%','Your share')}${stat(fmt(e.earned),'Earned')}${stat(fmt(e.avail),'Available to withdraw')}</div><p><button class="btn" data-a="payout" ${e.avail>0?'':'disabled'}>Request payout</button></p><div class="card tblw"><table><tr><th>Amount</th><th>Status</th></tr>${po.map(x=>`<tr><td>${fmt(x.amt)}</td><td>${tag(x.st)}</td></tr>`).join('')||'<tr><td class="mute">No payouts yet.</td></tr>'}</table></div>`},
+payouts(){return `<h1>Teacher payouts</h1><div class="card tblw"><table><tr><th>Teacher</th><th>Amount</th><th>Status</th><th></th></tr>${S.payouts.map(x=>`<tr><td>${x.t}</td><td>${fmt(x.amt)}</td><td>${tag(x.st)}</td><td>${x.st==='PENDING'?`<button class="btn ok" data-a="payok" data-v="${x.id}">Mark paid</button>`:''}</td></tr>`).join('')||'<tr><td class="mute">No payout requests yet.</td></tr>'}</table></div>`},
+profile(){return `<h1>Profile</h1><div class="card"><b>${S.user.name}</b><br><span class="mute">${S.user.e} · ${S.user.role}</span></div><div class="card" style="margin-top:14px;max-width:420px"><h3>Change password</h3><label>Current password<input id="p0" type="password" autocomplete="current-password"></label><label>New password<input id="p1" type="password" autocomplete="new-password"></label><label>Confirm new password<input id="p2" type="password" autocomplete="new-password"></label><button class="btn" data-a="chpw">Save changes</button></div>`}
+};
+function setView(v){S.panel=false;const s=S.role;if(!['detail','buy','learn','cert','forbidden'].includes(v)&&!ROUTES[s].includes(v)){v='forbidden'}S.view=v;render();window.scrollTo(0,0)}
+function decide(list,id,st,why,notifyFn){const x=list.find(y=>y.id===id);x.st=st;if(why)x.why=why;notifyFn(x)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v,n=+v;
+ switch(a){
+ case'fill':$('#em').value=v;$('#pw').value='Demo@2026';break;
+ case'login':{const u=ACC.find(x=>x.e===$('#em').value.trim().toLowerCase());if(!u||$('#pw').value!==(u.pw||'Demo@2026')){$('#err').textContent='Wrong email or password.';break}
+  if(u.status==='REJECTED'){$('#err').textContent='Your teacher application was rejected. '+(u.why||'');break}
+  S.user=u;S.role=u.role;S.view='home';S.sel=null;if(u.role==='student')S.me.student=u.name;if(u.role==='teacher')S.me.teacher=u.name;render();break}
+ case'showforgot':S.auth='forgot';render();break;
+ case'sendcode':{const u=ACC.find(x=>x.e===$('#fe').value.trim().toLowerCase());toast(u?'Code sent by SMS. Demo code: 123456':'No account uses this email.');break}
+ case'doreset':{const u=ACC.find(x=>x.e===$('#fe').value.trim().toLowerCase());if(!u||$('#fc').value.trim()!=='123456'){$('#err').textContent='Wrong email or code.';break}if($('#fp').value.length<8){$('#err').textContent='Password must have at least 8 characters.';break}u.pw=$('#fp').value;S.auth='login';render();toast('Password changed. Sign in with your new password.');break}
+ case'verify':{const k=S.certs.find(x=>x.code===$('#vc').value.trim().toUpperCase());toast(k?'Valid: '+k.stu+', '+S.courses.find(c=>c.id===k.c).t:'No certificate with this code.');break}
+ case'newcourse':{const t=$('#nct').value.trim(),pr=+$('#ncp').value;if(!t||!(pr>0)){toast('Enter a title and a price above 0.');break}S.courses.push({id:Math.max(...S.courses.map(c=>c.id))+1,t,teacher:S.me.teacher,cat:'General',price:pr,dur:'Self-paced',what:['Course overview'],stu:[]});toast('Course created and published.');render();break}
+ case'chpw':{const u=S.user;if($('#p0').value!==(u.pw||'Demo@2026')){toast('Current password is wrong.');break}if($('#p1').value.length<8||$('#p1').value!==$('#p2').value){toast('New passwords must match and have 8+ characters.');break}u.pw=$('#p1').value;toast('Password changed.');render();break}
+ case'quiz':S.qz=S.lesson;render();break;
+ case'ans':{if(QUIZ[S.lesson].a===n){S.quiz[K(S.sel)+'_'+S.lesson]=true;S.qz=null;toast('Correct. Lesson completed.');render()}else toast('Not quite. Try again.');break}
+ case'cert':{S.sel=n;if(!S.certs.find(k=>k.c===n&&k.stu===S.me.student)){S.certs.push({c:n,stu:S.me.student,code:'DSC-2026-'+String((n*7919+S.me.student.length*104729)%100000).padStart(5,'0'),d:'30/09/2026'});notify('student','Your certificate for '+S.courses.find(c=>c.id===n).t+' is ready.')}setView('cert');break}
+ case'print':window.print();break;
+ case'payout':{const e=earnOf(S.me.teacher);if(e.avail<=0){toast('Nothing available to withdraw.');break}S.payouts.push({id:Date.now(),t:S.me.teacher,amt:e.avail,st:'PENDING'});notify('accountant','Payout request from '+S.me.teacher);toast('Payout requested.');render();break}
+ case'payok':{const x=S.payouts.find(y=>y.id===n);x.st='PAID';notify('teacher','Your payout of '+fmt(x.amt)+' has been paid.');toast('Marked as paid.');render();break}
+ case'showsignup':S.auth='signup';render();break;
+ case'showlogin':S.auth='login';render();break;
+ case'register':{const g=id=>$('#'+id).value.trim(),err=m=>{$('#err').textContent=m},role=$('#rr').value,e=g('re').toLowerCase();
+  if(!g('rn'))return err('Enter your full name.');
+  if(!/^\S+@\S+\.\S+$/.test(e))return err('Enter a valid email address.');
+  if(ACC.some(x=>x.e===e))return err('This email is already registered.');
+  if(role==='teacher'&&!g('rq'))return err('Enter your qualification.');
+  if($('#r1').value.length<8)return err('Password must have at least 8 characters.');
+  if($('#r1').value!==$('#r2').value)return err('Passwords do not match.');
+  const acc={e,role,name:g('rn'),label:g('rn'),pw:$('#r1').value};
+  if(role==='teacher'){acc.status='PENDING';ACC.push(acc);S.apps.unshift({id:Date.now(),n:acc.name,e,q:g('rq'),x:g('rx')||'-',st:'PENDING'});notify('admin','New teacher application from '+acc.name);S.auth='login';render();toast('Application sent. Sign in to see your approval status.')}
+  else{ACC.push(acc);S.user=acc;S.role='student';S.me.student=acc.name;S.view='home';render();toast('Welcome, '+acc.name.split(' ')[0]+'. Your account is ready.')}
+  break}
+ case'logout':S.user=null;S.view='home';S.sel=null;render();toast('You have been signed out.');break;
+ case'go':setView(v);break;
+ case'hack':S.view='forbidden';render();break;
+ case'bell':S.panel=!S.panel;render();break;
+ case'room':S.room=n;render();break;
+ case'ask':S.room=n;setView('msgs');break;
+ case'send':case'ann':{const t=$('#mt').value.trim();if(!t){toast('Write a message first.');break}const ann=a==='ann',c=S.courses.find(x=>x.id===n);
+  S.msgs.push({c:n,who:S.user.name,text:esc(t),t:'now',ann});notify(S.role==='student'?'teacher':'student',(ann?'New announcement in ':'New message in ')+c.t);render();const ch=$('#chat');if(ch)ch.scrollTop=ch.scrollHeight;break}
+ case'detail':S.sel=n;setView('detail');break;
+ case'buy':S.sel=n;setView('buy');break;
+ case'open':S.sel=n;S.lesson=0;setView('learn');break;
+ case'lesson':S.lesson=n;render();break;
+ case'submit':{const pm=$('#pm').value.trim(),pr=$('#pr').value.trim();if(pm.length<10||pr.length<6){toast('Paste the full payment message and a valid reference.');break}
+  if(S.pay.some(x=>x.ref.toLowerCase()===pr.toLowerCase())){toast('This transaction reference was already submitted.');break}const c=S.courses.find(x=>x.id===n);S.pay.unshift({id:Date.now(),stu:S.me.student,c:n,amt:c.price,st:'PENDING',ref:pr,msg:pm,d:'30/09/2026'});toast('Payment submitted. Status: PENDING');setView('payments');break}
+ case'watch':{const a2=S.prog[K(S.sel)];a2[S.lesson]=Math.min(100,(a2[S.lesson]||0)+Math.round(1000/S.lessons[S.lesson].min));render();break}
+ case'skip':{const a2=S.prog[K(S.sel)];if((a2[S.lesson]||0)<S.settings.threshold){toast('Watch at least '+S.settings.threshold+'% first.');break}render();break}
+ case'tapp':decide(S.apps,n,'APPROVED','',x=>{const c=ACC.find(y=>y.e===x.e);if(c)delete c.status;toast(x.n+' approved. Teaching enabled.')});render();break;
+ case'trej':{const w=prompt('Rejection reason','Please provide a valid teaching qualification.');if(w===null)break;decide(S.apps,n,'REJECTED',w,x=>{const c=ACC.find(y=>y.e===x.e);if(c){c.status='REJECTED';c.why=w}toast(x.n+' rejected.')});render();break}
+ case'papp':decide(S.pay,n,'APPROVED','',x=>{notify('student','Your payment for '+S.courses.find(c=>c.id===x.c).t+' has been approved. Your course is now available.');{const cc=S.courses.find(c=>c.id===x.c);if(!cc.stu.includes(x.stu))cc.stu.push(x.stu)}toast('Approved. Enrollment created, course unlocked.')});render();break;
+ case'prej':{const w=prompt('Rejection reason','Payment could not be verified. Please submit a valid transaction message.');if(w===null)break;decide(S.pay,n,'REJECTED',w,x=>{notify('student','Your payment was rejected. Reason: '+w);toast('Rejected. Course stays locked.')});render();break}
+ case'tst':S.sel=n;setView('tstudents');break;
+ case'saveth':{const t=+$('#th').value;if(t<50||t>100){toast('Enter a value from 50 to 100.');break}S.settings.threshold=t;const sh=+$('#sh').value;if(sh<0||sh>100){toast('Share must be 0 to 100.');break}S.settings.share=sh;S.settings.sms=$('#sm').checked;toast('Saved');break}
+ case'mock':toast('Saved (demo)');break}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&!S.user&&e.target.tagName==='INPUT')document.querySelector('[data-a=login],[data-a=register],[data-a=doreset]').click()});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='mt')document.querySelector('[data-a=send]').click()});
+document.addEventListener('change',e=>{if(e.target.id==='rr')$('#tx').style.display=e.target.value==='teacher'?'block':'none'});
+let idle;const bump=()=>{clearTimeout(idle);if(S.user)idle=setTimeout(()=>{S.user=null;render();toast('Signed out after 10 minutes of inactivity.')},600000)};
+['click','keydown'].forEach(ev=>document.addEventListener(ev,bump));
+render();
+</script></body></html>
