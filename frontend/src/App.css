@@ -1,0 +1,94 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(120deg, #0B6E6E, #0d3442);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+header p {
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #17242B;
+}
+
+.hero > p {
+  font-size: 1.2rem;
+  color: #63727A;
+  margin-bottom: 3rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.feature h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #0B6E6E;
+}
+
+.feature p {
+  color: #63727A;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
