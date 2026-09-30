@@ -205,4 +205,9 @@ document.addEventListener('change',e=>{if(e.target.id==='rr')$('#tx').style.disp
 let idle;const bump=()=>{clearTimeout(idle);if(S.user)idle=setTimeout(()=>{S.user=null;render();toast('Signed out after 10 minutes of inactivity.')},600000)};
 ['click','keydown'].forEach(ev=>document.addEventListener(ev,bump));
 render();
-</script></body></html>
+</script>
+<script>
+window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body></html>
