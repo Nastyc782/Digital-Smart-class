@@ -144,13 +144,116 @@ tr:hover td{background:color-mix(in srgb,var(--brand2) 58%,var(--card))}
  .btn{padding:9px 12px}
 }
 @media(prefers-reduced-motion:reduce){.card,.btn,nav button,.lesson{transition:none!important}}
+.landing-page{--bg:#F5F7F5;--card:#fff;--ink:#17242B;--mute:#63727A;--line:#DDE5E1;--brand:#0B6E6E;--brand2:#E3F2F0;background:radial-gradient(900px 460px at 85% 0%,rgba(11,110,110,.11),transparent 65%),var(--bg)}
+.landing-page header{min-height:72px;padding:12px clamp(16px,5vw,68px);border-bottom:1px solid rgba(23,36,43,.07);background:rgba(255,255,255,.86);backdrop-filter:blur(18px)}
+.landing-page .logo{font-size:18px}
+.landing-page .logo i{width:30px;height:30px;border-radius:10px}
+#hdr.public-header{gap:clamp(12px,2.4vw,34px)}
+.public-links,.public-actions{display:flex;align-items:center;gap:clamp(12px,2vw,26px)}
+.public-links a{color:var(--mute);font-size:13px;font-weight:600;text-decoration:none;transition:color .16s}
+.public-links a:hover{color:var(--brand)}
+.public-actions .btn{min-height:40px}
+.public-actions .btn.ghost{border-color:transparent}
+nav:empty{display:none}
+main.landing-main{max-width:none;margin:0;padding:28px clamp(14px,4vw,48px) 0}
+.landing-wrap{max-width:1180px;margin:0 auto}
+.lp-hero{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;min-height:510px;overflow:hidden;border:1px solid rgba(18,83,79,.08);border-radius:30px;background:linear-gradient(115deg,#F7FBF8 0%,#EDF6F2 56%,#E5F0EC 100%);box-shadow:0 22px 60px rgba(21,58,58,.09)}
+.lp-copy{position:relative;z-index:1;padding:58px clamp(30px,5vw,70px)}
+.lp-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid rgba(11,110,110,.15);border-radius:999px;background:rgba(255,255,255,.75);color:#176966;font-size:11px;font-weight:700;letter-spacing:.09em}
+.lp-dot{width:8px;height:8px;border-radius:50%;background:#0B8A78;box-shadow:0 0 0 4px rgba(11,138,120,.11)}
+.lp-title{max-width:610px;margin:22px 0 16px;font-size:clamp(42px,5.6vw,68px);line-height:.99;letter-spacing:-.065em}
+.lp-title span{color:#0B6E6E}
+.lp-copy>p{max-width:510px;margin:0;color:#53656A;font-size:16px;line-height:1.75}
+.lp-cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:27px}
+.lp-cta .btn{min-height:48px;padding:12px 18px;border-radius:11px}
+.lp-primary{display:inline-flex;align-items:center;gap:16px;box-shadow:0 8px 20px rgba(11,110,110,.2)}
+.lp-primary span{font-size:18px;line-height:1}
+.lp-secondary{background:rgba(255,255,255,.75)!important}
+.lp-proofline{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:24px;color:#587075;font-size:12px;font-weight:600}
+.lp-proofline span{display:inline-flex;align-items:center;gap:7px}
+.lp-proofline i{display:grid;width:17px;height:17px;place-items:center;border-radius:50%;background:#D9EEE6;color:#0B6E6E;font-size:11px;font-style:normal}
+.lp-visual{position:relative;display:grid;min-height:460px;place-items:center;padding:34px 36px 34px 8px}
+.lp-glow{position:absolute;inset:8% 4% 8% 3%;border-radius:50%;background:radial-gradient(ellipse,rgba(81,173,151,.26),rgba(81,173,151,0) 68%)}
+.lp-window{position:relative;z-index:1;width:min(100%,405px);overflow:hidden;border:1px solid rgba(20,66,69,.12);border-radius:20px;background:#fff;box-shadow:0 28px 65px rgba(17,60,63,.18);transform:rotate(1.5deg)}
+.lp-windowbar{display:flex;align-items:center;gap:6px;height:39px;padding:0 15px;border-bottom:1px solid #EEF2F0;background:#FBFCFB}
+.lp-windowbar i{width:7px;height:7px;border-radius:50%;background:#D5DFDC}
+.lp-windowbar span{margin-left:auto;color:#8C9A98;font-size:9px;font-weight:700;letter-spacing:.12em}
+.lp-windowbody{padding:23px 24px 25px}
+.lp-sample{display:inline-block;padding:5px 8px;border-radius:6px;background:#EFF7F4;color:#21746B;font-size:9px;font-weight:800;letter-spacing:.1em}
+.lp-windowbody h2{max-width:270px;margin:12px 0 18px;font-size:24px;line-height:1.15;letter-spacing:-.045em}
+.lp-dashcourse{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid #E8EEEB;border-radius:12px}
+.lp-coursemini{display:grid;width:43px;height:43px;place-items:center;border-radius:10px;background:linear-gradient(140deg,#C8EEE2,#91CFC0);color:#145F5A;font:800 12px 'Bricolage Grotesque',sans-serif}
+.lp-dashcourse b{font-size:12px}
+.lp-dashcourse small{display:block;margin-top:2px;color:#74837F;font-size:10px}
+.lp-playmark{display:grid;width:25px;height:25px;place-items:center;margin-left:auto;border-radius:50%;background:#E6F4EF;color:#0B6E6E;font-size:11px}
+.lp-meter{height:7px;margin-top:17px;overflow:hidden;border-radius:99px;background:#EAF0ED}
+.lp-meter i{display:block;width:60%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#0B6E6E,#4BB39A)}
+.lp-meter-label{display:flex;justify-content:space-between;margin-top:7px;color:#71817E;font-size:10px}
+.lp-meter-label b{color:#285B58}
+.lp-smalltiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}
+.lp-smalltile{padding:10px;border-radius:10px;background:#F6F9F7;color:#566763;font-size:10px}
+.lp-smalltile b{display:block;margin-bottom:2px;color:#263A38;font-size:11px}
+.lp-float{position:absolute;z-index:2;display:flex;align-items:center;gap:9px;padding:11px 14px;border:1px solid rgba(22,61,59,.08);border-radius:13px;background:rgba(255,255,255,.94);box-shadow:0 12px 28px rgba(24,70,65,.12)}
+.lp-float-top{top:11%;right:1%}
+.lp-float-bottom{bottom:10%;left:-2%}
+.lp-float-icon{display:grid;width:30px;height:30px;place-items:center;border-radius:9px;background:#FFF3D3;color:#7D5B0C;font-size:15px}
+.lp-float b,.lp-float small{display:block}
+.lp-float b{font-size:10px}
+.lp-float small{margin-top:2px;color:#77847F;font-size:9px}
+.lp-section{padding:82px 0}
+.lp-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:26px}
+.lp-kicker{margin:0 0 9px;color:#0B7770;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.lp-section-head h2,.lp-how-head h2{max-width:620px;margin:0;font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-.05em}
+.lp-section-head>p{max-width:360px;margin:0;color:var(--mute);font-size:14px}
+.lp-features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.lp-feature{padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.76);box-shadow:0 5px 18px rgba(25,59,55,.035)}
+.lp-feature-num{display:grid;width:38px;height:38px;place-items:center;margin-bottom:18px;border-radius:12px;background:#E3F2F0;color:#176E68;font:800 12px 'Bricolage Grotesque',sans-serif}
+.lp-feature h3{margin-bottom:7px;font-size:16px}
+.lp-feature p{margin:0;color:var(--mute);font-size:13px;line-height:1.65}
+.lp-course-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.lp-course{overflow:hidden;padding:0;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 5px 18px rgba(25,59,55,.04);transition:transform .18s,box-shadow .18s,border-color .18s}
+.lp-course:hover{transform:translateY(-4px);border-color:rgba(11,110,110,.25);box-shadow:0 16px 32px rgba(25,59,55,.11)}
+.lp-course-art{position:relative;display:flex;min-height:130px;align-items:flex-end;justify-content:space-between;overflow:hidden;padding:16px;color:#153D3B}
+.lp-course-art:after{position:absolute;top:-31px;right:15px;width:118px;height:118px;border:1px solid rgba(22,66,61,.12);border-radius:50%;box-shadow:0 0 0 18px rgba(255,255,255,.14),0 0 0 38px rgba(255,255,255,.12);content:""}
+.lp-art-0{background:linear-gradient(140deg,#D5F0E8,#9ED9C8)}
+.lp-art-1{background:linear-gradient(140deg,#DEE9FF,#A7BCE9)}
+.lp-art-2{background:linear-gradient(140deg,#FCEBC8,#E9C77A)}
+.lp-art-3{background:linear-gradient(140deg,#E9E1F5,#C4B0E0)}
+.lp-course-art span,.lp-course-art strong{position:relative;z-index:1}
+.lp-course-art span{align-self:flex-start;padding:5px 8px;border:1px solid rgba(23,59,55,.1);border-radius:7px;background:rgba(255,255,255,.55);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.lp-course-art strong{font:800 22px 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em}
+.lp-course-body{padding:16px}
+.lp-course-body h3{min-height:42px;margin:0 0 6px;font-size:17px}
+.lp-course-body p{margin:0;color:var(--mute);font-size:11px}
+.lp-course-skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.lp-course-skills span{padding:5px 8px;border-radius:6px;background:var(--bg);color:#556660;font-size:10px;font-weight:600}
+.lp-course-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.lp-course-foot b{font-size:13px}
+.lp-course-foot span{color:#0B6E6E;font-size:10px;font-weight:700}
+.lp-how{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:start;padding:38px;border:1px solid rgba(11,110,110,.1);border-radius:22px;background:linear-gradient(125deg,#EDF7F3,#F8FBF8)}
+.lp-how-head h2{font-size:clamp(28px,3vw,36px)}
+.lp-how-head p{max-width:340px;margin:13px 0 0;color:var(--mute);font-size:13px;line-height:1.7}
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.lp-step{padding:17px;border:1px solid rgba(17,76,71,.09);border-radius:14px;background:rgba(255,255,255,.78)}
+.lp-step-no{color:#0B7770;font-size:10px;font-weight:800;letter-spacing:.1em}
+.lp-step h3{margin:13px 0 6px;font-size:15px}
+.lp-step p{margin:0;color:var(--mute);font-size:11px;line-height:1.6}
+.lp-final{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 auto 58px;padding:30px 34px;border-radius:19px;background:linear-gradient(115deg,#126E72,#163F50);color:#fff;box-shadow:0 14px 34px rgba(17,68,77,.14)}
+.lp-final h2{margin:0;font-size:clamp(23px,3vw,32px);letter-spacing:-.04em}
+.lp-final p{margin:5px 0 0;color:rgba(255,255,255,.75);font-size:13px}
+.lp-final .btn{flex:none;background:#FFCC00;color:#17242B;box-shadow:none}
+.lp-footer{display:flex;justify-content:space-between;gap:14px;padding:19px 0 26px;border-top:1px solid var(--line);color:var(--mute);font-size:11px}
+.lp-footer b{color:var(--ink)}
+@media(max-width:940px){.lp-hero{grid-template-columns:1fr 1fr;min-height:480px}.lp-copy{padding:40px 28px}.lp-title{font-size:clamp(40px,5.5vw,58px)}.lp-visual{min-height:390px;padding:24px 22px 24px 0}.lp-float-top{right:0}.lp-course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lp-how{grid-template-columns:1fr;gap:24px}}
+@media(max-width:680px){#hdr.public-header{gap:8px}.public-links{display:none}.public-actions{gap:4px}.public-actions .btn{min-height:36px;padding:8px 10px;font-size:12px}main.landing-main{padding:16px 13px 0}.lp-hero{grid-template-columns:1fr;border-radius:22px}.lp-copy{padding:34px 22px 15px}.lp-title{margin-top:18px;font-size:clamp(40px,11vw,52px)}.lp-copy>p{font-size:14px}.lp-cta{margin-top:21px}.lp-cta .btn{min-height:44px;padding:10px 13px;font-size:12px}.lp-proofline{gap:8px 12px;margin-top:17px;font-size:10px}.lp-visual{min-height:330px;padding:20px 27px 25px}.lp-window{width:min(100%,390px)}.lp-windowbody{padding:18px}.lp-float-top{top:4%;right:1%}.lp-float-bottom{bottom:3%;left:1%}.lp-section{padding:58px 0}.lp-section-head{display:block}.lp-section-head>p{margin-top:11px}.lp-features{grid-template-columns:1fr;gap:10px}.lp-feature{display:grid;grid-template-columns:40px 1fr;column-gap:13px;padding:16px}.lp-feature-num{grid-row:span 2;margin:0}.lp-feature h3{margin:1px 0 4px}.lp-course-grid{grid-template-columns:1fr 1fr;gap:10px}.lp-course-art{min-height:100px;padding:11px}.lp-course-art strong{font-size:17px}.lp-course-body{padding:12px}.lp-course-body h3{min-height:0;font-size:14px}.lp-course-skills{gap:4px}.lp-course-skills span{padding:4px 6px;font-size:9px}.lp-course-foot b{font-size:11px}.lp-course-foot span{font-size:9px}.lp-how{padding:22px 17px;gap:20px}.lp-steps{grid-template-columns:1fr}.lp-step{display:grid;grid-template-columns:32px 1fr;column-gap:10px;padding:13px}.lp-step-no{grid-row:span 2}.lp-step h3{margin:0 0 4px}.lp-final{display:block;margin-bottom:40px;padding:25px 21px}.lp-final .btn{margin-top:16px}.lp-footer{display:block}.lp-footer span{display:block;margin-top:4px}}
+@media(max-width:390px){.landing-page .logo{font-size:15px}.landing-page .logo i{width:25px;height:25px;margin-right:7px}.public-actions .btn{padding:7px 8px;font-size:11px}.lp-course-grid{grid-template-columns:1fr}.lp-course-art{min-height:115px}}
 </style></head><body>
 <header><div class="logo"><i></i>Digital Smart Class</div>
 <div class="row" style="margin-left:auto" id="hdr"></div></header>
 <nav id="nav"></nav><main id="main"></main><div id="toast" role="status"></div>
 <script>
 const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString('en-US')+' RWF';
-const S={role:'student',view:'home',sel:null,lesson:0,
+const S={role:'student',view:'home',auth:'landing',sel:null,lesson:0,
  settings:{threshold:90,sms:true,share:70},
  me:{student:'Fabrice Tuyishime',teacher:'John Habimana',admin:'Admin',accountant:'Accountant'},
  courses:[
@@ -176,7 +279,15 @@ const tag=s=>`<span class="tag ${s}">${s}</span>`;
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('on'),2600)}
 function notify(r,m){S.notes.unshift({r,m});if(S.settings.sms)S.sms.unshift({to:r,m})}
 function render(){
- if(!S.user){$('#hdr').innerHTML='';$('#nav').innerHTML='';$('#main').innerHTML=S.auth==='signup'?signupView():S.auth==='forgot'?forgotView():loginView();return}
+ if(!S.user){
+  const landing=(S.auth||'landing')==='landing';
+  document.body.classList.toggle('landing-page',landing);
+  $('#main').classList.toggle('landing-main',landing);
+  $('#hdr').classList.toggle('public-header',true);
+  $('#hdr').innerHTML=publicHeader();$('#nav').innerHTML='';
+  $('#main').innerHTML=landing?landingView():S.auth==='signup'?signupView():S.auth==='forgot'?forgotView():loginView();return
+ }
+ document.body.classList.remove('landing-page');$('#main').classList.remove('landing-main');$('#hdr').classList.remove('public-header');
  if(S.user.status==='PENDING'){$('#hdr').innerHTML=hdr(0);$('#nav').innerHTML='';$('#main').innerHTML=`<div class="card" style="max-width:520px;margin:30px auto"><h2>Application under review</h2><p>${tag('PENDING')}</p><p class="mute">An administrator is reviewing your teacher application. You will be notified when it is approved. You cannot create courses until then.</p></div>`;return}
  $('#nav').innerHTML=ROUTES[S.role].map(v=>`<button data-a="go" data-v="${v}" class="${S.view===v?'on':''}">${LBL[v]}</button>`).join('')+(S.role==='student'?`<button data-a="hack">Try /admin/dashboard</button>`:'');
  $('#hdr').innerHTML=hdr(S.notes.filter(x=>x.r===S.role).length);
@@ -190,6 +301,50 @@ const qzView=()=>{const q=QUIZ[S.lesson];return `<div class="card" style="margin
 const earnOf=t=>{const my=S.courses.filter(c=>c.teacher===t).map(c=>c.id),gross=S.pay.filter(p=>p.st==='APPROVED'&&my.includes(p.c)).reduce((a,p)=>a+p.amt,0),earned=Math.round(gross*S.settings.share/100),paid=S.payouts.filter(x=>x.t===t&&x.st!=='REJECTED').reduce((a,x)=>a+x.amt,0);return{gross,earned,avail:earned-paid}};
 const forgotView=()=>`<div class="hero">${HERO}<div class="r"><h1>Reset password</h1><div class="card"><label>Email<input id="fe" type="email"></label><button class="btn ghost" data-a="sendcode">Send code by SMS</button><label style="margin-top:12px">Code<input id="fc" inputmode="numeric"></label><label>New password<input id="fp" type="password" autocomplete="new-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="doreset">Reset password</button><p class="mute" style="margin-bottom:0"><button class="btn ghost" data-a="showlogin">Back to sign in</button></p></div></div></div>`;
 const ACC=[{e:'student@demo.rw',role:'student',name:'Fabrice Tuyishime',label:'Student'},{e:'teacher@demo.rw',role:'teacher',name:'John Habimana',label:'Teacher'},{e:'admin@demo.rw',role:'admin',name:'Platform Admin',label:'Admin'},{e:'accountant@demo.rw',role:'accountant',name:'Platform Accountant',label:'Accountant'},{e:'newteacher@demo.rw',role:'teacher',name:'Teacher A',label:'Teacher (pending)',status:'PENDING'}];
+const publicHeader=()=>S.auth==='landing'?`<div class="public-links" aria-label="Page sections"><a href="#why-dsc">Why DSC</a><a href="#course-section">Courses</a><a href="#how-it-works">How it works</a></div><div class="public-actions"><button class="btn ghost" data-a="showlogin">Sign in</button><button class="btn" data-a="showsignup">Get started</button></div>`:`<div class="public-actions"><button class="btn ghost" data-a="showhome">← Home</button></div>`;
+const landingView=()=>`<div id="top" class="landing-wrap">
+ <section class="lp-hero">
+  <div class="lp-copy">
+   <div class="lp-eyebrow"><i class="lp-dot"></i> PRACTICAL LEARNING, BUILT AROUND YOU</div>
+   <h1 class="lp-title">Learn skills.<br><span>Build what’s next.</span></h1>
+   <p>Take practical courses in web development, Java, networking, and cybersecurity. Learn step by step, track your progress, and ask your teacher when you need help.</p>
+   <div class="lp-cta"><button class="btn lp-primary" data-a="showsignup">Create your account <span>→</span></button><button class="btn ghost lp-secondary" data-a="showlogin">Explore the demo</button></div>
+   <div class="lp-proofline"><span><i>✓</i> Learn at your pace</span><span><i>✓</i> MTN MoMo payments</span><span><i>✓</i> Teacher support</span></div>
+  </div>
+  <div class="lp-visual" aria-label="Sample learning dashboard">
+   <div class="lp-glow"></div>
+   <div class="lp-float lp-float-top"><span class="lp-float-icon">✦</span><span><b>Small steps add up</b><small>Keep your learning moving</small></span></div>
+   <div class="lp-window">
+    <div class="lp-windowbar"><i></i><i></i><i></i><span>YOUR LEARNING SPACE</span></div>
+    <div class="lp-windowbody"><span class="lp-sample">SAMPLE DASHBOARD</span><h2>Make progress, one lesson at a time.</h2>
+     <div class="lp-dashcourse"><span class="lp-coursemini">WD</span><span><b>Web Development</b><small>Hands-on learning path</small></span><span class="lp-playmark">▶</span></div>
+     <div class="lp-meter"><i></i></div><div class="lp-meter-label"><span>Sample course progress</span><b>60%</b></div>
+     <div class="lp-smalltiles"><div class="lp-smalltile"><b>Learn by doing</b>Practice with each topic</div><div class="lp-smalltile"><b>Get support</b>Ask in your course room</div></div>
+    </div>
+   </div>
+   <div class="lp-float lp-float-bottom"><span class="lp-float-icon">✓</span><span><b>Built around real skills</b><small>Clear lessons. Visible progress.</small></span></div>
+  </div>
+ </section>
+ <section id="why-dsc" class="lp-section">
+  <div class="lp-section-head"><div><p class="lp-kicker">A better way to learn</p><h2>Keep learning practical, clear, and supported.</h2></div><p>Everything you need to move from a new topic to confident practice—without losing sight of your progress.</p></div>
+  <div class="lp-features">
+   <article class="lp-feature"><span class="lp-feature-num">01</span><h3>Learn through practice</h3><p>Follow focused lessons, work through quizzes, and build understanding as you go.</p></article>
+   <article class="lp-feature"><span class="lp-feature-num">02</span><h3>See your progress</h3><p>Pick up where you left off and keep track of completed lessons in your dashboard.</p></article>
+   <article class="lp-feature"><span class="lp-feature-num">03</span><h3>Get help from a teacher</h3><p>Ask questions in your course room and stay connected as you learn.</p></article>
+  </div>
+ </section>
+ <section id="course-section" class="lp-section" style="padding-top:8px">
+  <div class="lp-section-head"><div><p class="lp-kicker">Explore the catalog</p><h2>Choose a skill to start building.</h2></div><button class="btn ghost" data-a="showlogin">Browse in the demo <span aria-hidden="true">→</span></button></div>
+  <div class="lp-course-grid">${S.courses.slice(0,4).map((c,i)=>`<article class="lp-course"><div class="lp-course-art lp-art-${i%4}"><span>${esc(c.cat)}</span><strong>${['WEB','JAVA','NETWORK','SECURITY'][i%4]}</strong></div><div class="lp-course-body"><h3>${esc(c.t)}</h3><p>${esc(c.teacher)} · ${esc(c.dur)}</p><div class="lp-course-skills">${c.what.slice(0,3).map(w=>`<span>${esc(w)}</span>`).join('')}</div><div class="lp-course-foot"><b>${fmt(c.price)}</b><span>COURSE PREVIEW</span></div></div></article>`).join('')}</div>
+ </section>
+ <section id="how-it-works" class="lp-section" style="padding-top:12px">
+  <div class="lp-how"><div class="lp-how-head"><p class="lp-kicker">Getting started</p><h2>From choosing a course to your next milestone.</h2><p>Start with a topic that matters to you. Your dashboard keeps each next step easy to find.</p></div>
+   <div class="lp-steps"><article class="lp-step"><span class="lp-step-no">STEP 01</span><h3>Choose a course</h3><p>Compare topics, course length, teacher, and price before you begin.</p></article><article class="lp-step"><span class="lp-step-no">STEP 02</span><h3>Enroll with MoMo</h3><p>Submit your MTN Mobile Money details for review and course access.</p></article><article class="lp-step"><span class="lp-step-no">STEP 03</span><h3>Learn and progress</h3><p>Complete lessons, check your progress, and get support in the course room.</p></article></div>
+  </div>
+ </section>
+ <section class="lp-final"><div><h2>Your next skill can start today.</h2><p>Create an account to explore courses and track your learning.</p></div><button class="btn" data-a="showsignup">Get started <span aria-hidden="true">→</span></button></section>
+ <footer class="lp-footer"><b>Digital Smart Class</b><span>Practical learning for your next step.</span></footer>
+</div>`;
 const hdr=n=>`<span style="position:relative"><button class="btn ghost" data-a="bell" aria-label="Notifications">🔔 ${n}</button>${S.panel?`<div class="np">${S.notes.filter(x=>x.r===S.role).map(x=>`<div>${x.m}</div>`).join('')||'<div class="mute">No notifications yet.</div>'}</div>`:''}</span><span class="av">${S.user.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</span><span class="mute" style="line-height:1.2"><b style="color:var(--ink)">${S.user.name}</b><br>${S.user.role}</span><button class="btn ghost" data-a="logout">Log out</button>`;
 const loginView=()=>`<div class="hero">${HERO}<div class="r"><h1>Sign in</h1><p class="mute">You will be taken to the dashboard for your role.</p><div class="card"><label>Email<input id="em" type="email" autocomplete="username"></label><label>Password<input id="pw" type="password" autocomplete="current-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="login">Sign in</button><p class="mute" style="margin-bottom:0">New here? <button class="btn ghost" data-a="showsignup">Create an account</button> <button class="btn ghost" data-a="showforgot">Forgot password?</button></p></div><div class="card" style="margin-top:14px"><b>Verify a certificate</b><div class="row" style="margin-top:8px"><input id="vc" placeholder="DSC-2026-12345" style="flex:1;margin:0"><button class="btn ghost" data-a="verify">Verify</button></div></div><div class="card" style="margin-top:14px"><b>Demo accounts</b> <span class="mute">Password: Demo@2026</span><div class="row" style="margin-top:8px">${ACC.map(a=>`<button class="btn ghost" data-a="fill" data-v="${a.e}">${a.label}</button>`).join('')}</div></div></div></div>`;
 const signupView=()=>`<div class="hero">${HERO}<div class="r"><h1>Create your account</h1><div class="card"><label>I am a<select id="rr"><option value="student">Student</option><option value="teacher">Teacher</option></select></label><label>Full name<input id="rn" autocomplete="name"></label><label>Email<input id="re" type="email" autocomplete="username"></label><label>Phone<input id="rp" type="tel"></label><div id="tx" style="display:none"><label>Qualification<input id="rq" placeholder="e.g. Bachelor's degree in IT"></label><label>Experience<input id="rx" placeholder="e.g. 3 years"></label><label>Address<input id="ra"></label></div><label>Password<input id="r1" type="password" autocomplete="new-password"></label><label>Confirm password<input id="r2" type="password" autocomplete="new-password"></label><p id="err" role="alert" style="color:var(--bad);margin:0 0 10px"></p><button class="btn" style="width:100%" data-a="register">Create account</button><p class="mute" style="margin-bottom:0">Teachers must be approved by an admin before they can teach. <button class="btn ghost" data-a="showlogin">Back to sign in</button></p></div></div></div>`;
@@ -237,7 +392,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  case'login':{const u=ACC.find(x=>x.e===$('#em').value.trim().toLowerCase());if(!u||$('#pw').value!==(u.pw||'Demo@2026')){$('#err').textContent='Wrong email or password.';break}
   if(u.status==='REJECTED'){$('#err').textContent='Your teacher application was rejected. '+(u.why||'');break}
   S.user=u;S.role=u.role;S.view='home';S.sel=null;if(u.role==='student')S.me.student=u.name;if(u.role==='teacher')S.me.teacher=u.name;render();break}
- case'showforgot':S.auth='forgot';render();break;
+  case'showforgot':S.auth='forgot';render();window.scrollTo(0,0);break;
  case'sendcode':{const u=ACC.find(x=>x.e===$('#fe').value.trim().toLowerCase());toast(u?'Code sent by SMS. Demo code: 123456':'No account uses this email.');break}
  case'doreset':{const u=ACC.find(x=>x.e===$('#fe').value.trim().toLowerCase());if(!u||$('#fc').value.trim()!=='123456'){$('#err').textContent='Wrong email or code.';break}if($('#fp').value.length<8){$('#err').textContent='Password must have at least 8 characters.';break}u.pw=$('#fp').value;S.auth='login';render();toast('Password changed. Sign in with your new password.');break}
  case'verify':{const k=S.certs.find(x=>x.code===$('#vc').value.trim().toUpperCase());toast(k?'Valid: '+k.stu+', '+S.courses.find(c=>c.id===k.c).t:'No certificate with this code.');break}
@@ -249,8 +404,9 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
  case'print':window.print();break;
  case'payout':{const e=earnOf(S.me.teacher);if(e.avail<=0){toast('Nothing available to withdraw.');break}S.payouts.push({id:Date.now(),t:S.me.teacher,amt:e.avail,st:'PENDING'});notify('accountant','Payout request from '+S.me.teacher);toast('Payout requested.');render();break}
  case'payok':{const x=S.payouts.find(y=>y.id===n);x.st='PAID';notify('teacher','Your payout of '+fmt(x.amt)+' has been paid.');toast('Marked as paid.');render();break}
- case'showsignup':S.auth='signup';render();break;
- case'showlogin':S.auth='login';render();break;
+  case'showsignup':S.auth='signup';render();window.scrollTo(0,0);break;
+  case'showlogin':S.auth='login';render();window.scrollTo(0,0);break;
+  case'showhome':S.auth='landing';render();window.scrollTo(0,0);break;
  case'register':{const g=id=>$('#'+id).value.trim(),err=m=>{$('#err').textContent=m},role=$('#rr').value,e=g('re').toLowerCase();
   if(!g('rn'))return err('Enter your full name.');
   if(!/^\S+@\S+\.\S+$/.test(e))return err('Enter a valid email address.');
@@ -262,7 +418,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b
   if(role==='teacher'){acc.status='PENDING';ACC.push(acc);S.apps.unshift({id:Date.now(),n:acc.name,e,q:g('rq'),x:g('rx')||'-',st:'PENDING'});notify('admin','New teacher application from '+acc.name);S.auth='login';render();toast('Application sent. Sign in to see your approval status.')}
   else{ACC.push(acc);S.user=acc;S.role='student';S.me.student=acc.name;S.view='home';render();toast('Welcome, '+acc.name.split(' ')[0]+'. Your account is ready.')}
   break}
- case'logout':S.user=null;S.view='home';S.sel=null;render();toast('You have been signed out.');break;
+  case'logout':S.user=null;S.auth='landing';S.view='home';S.sel=null;render();toast('You have been signed out.');break;
  case'go':setView(v);break;
  case'hack':S.view='forbidden';render();break;
  case'bell':S.panel=!S.panel;render();break;
